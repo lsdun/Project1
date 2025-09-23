@@ -6,9 +6,9 @@ which introduces the damping force, gamma * dx/dt.
 
 """
 
-def damped(X, t, m, gamma, k):
+def damped(X, t, m=1.0, gamma=0.2, k=1.0):
     """
-   Perform one step of Euler's method for an ODE.
+   Equation of motion for the damped harmonic oscillator
 
     Args:
         X (array_like): State vector.
@@ -18,15 +18,10 @@ def damped(X, t, m, gamma, k):
         k (float): Spring constant.
 
     Returns:
-        ndarray: Derivatives of the state vector.
+        list: Derivatives of the state vector.
     """
-    x, v = X    # unpack variables
+    x, v = X  # unpack state vector
     dxdt = v
     dvdt = -(k/m) * x - (gamma/m) * v
-    dXdt = [dxdt, dvdt]    # pack derivatives
-    return dXdt
+    return [dxdt, dvdt] # pack derivatives
 
-# set parameters
-m = 1    # mass
-gamma = 0.2 # damping coefficient 
-k = 1 # spring coefficient 
