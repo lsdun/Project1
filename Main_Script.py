@@ -8,10 +8,13 @@ the damped harmonic oscillator.
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.colors as mcolors
+from scipy.integrate import solve_ivp
 
 # Import the ODE solvers
 from Integrators import euler_loop, rk4_loop
 from Damped_Oscillator import damped
+from Analytic_Solutions import analytic_damped
+
 
 # Define parameters to run the integrators
 t0 = 0.0 # initial time
@@ -67,6 +70,34 @@ plt.plot(t_vals, E_rk4, label='RK4 Energy', color="teal")
 plt.xlabel("Time [s]", fontsize=15)
 plt.ylabel('Total Energy E(t) [J]', fontsize=15)
 plt.title('Damped Harmonic Oscillator Energy Decay', fontsize=20)
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+
+# Try different damping values to show under, critical, and overdamping
+gamma_values = [0.2, 2.0, 5.0]  # under, critical, over
+labels = ["Underdamped", "Critically Damped", "Overdamped"]
+colors = ["mediumvioletred", "teal", "lightgreen"]
+
+plt.figure(figsize=(10, 7))
+for gamma, label, color in zip(gamma_values, labels, colors):
+    # redefine damped function with this gamma
+    def damped_gamma(X, t, m=1.0, gamma=gamma, k=1.0):
+        """
+        Rerun the ODE with different damping values gamma and plot displacement vs. time
+        """
+        x, v = X
+        dxdt = v
+        dvdt = -(k/m) * x - (gamma/m) * v
+        return [dxdt, dvdt]
+    
+    t_vals, S_vals = rk4_loop(damped_gamma, S0, t0, t1, h)
+    plt.plot(t_vals, S_vals[:, 0], label=label, color=color)
+
+plt.xlabel("Time [s]", fontsize=15)
+plt.ylabel("Displacement x(t)", fontsize=15)
+plt.title("Damped Harmonic Oscillator in Different Regimes", fontsize=20)
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
