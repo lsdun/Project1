@@ -169,3 +169,4 @@ def simpson_rule(func, a, b, n, *args):
     dx = (b - a) / n
 
     S = (dx/3) * (y[0] + 2*np.sum(y[2:-1:2]) + 4*np.sum(y[1::2]) + y[-1])
+    return S
