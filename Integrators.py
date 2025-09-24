@@ -49,7 +49,8 @@ def euler_loop(func, S0, t0, t1, h):
     # Perform the integration for the chosen number of steps:
     S_vals[0] = S0 # initial value of the state vector
     for i in range(len(t_vals) - 1):
-        S_vals[i+1] = euler_method(func, t_vals[i], S_vals[i], h)
+        # append the updated state value to the empty array
+        S_vals[i+1] = euler_method(func, t_vals[i], S_vals[i], h) 
     return t_vals, S_vals
 
 # Fourth-Order Runge-Kutta Method:
@@ -99,3 +100,72 @@ def rk4_loop(func, S0, t0, t1, h):
     for i in range(len(t_vals) - 1):
         S_vals[i+1] = rk4_method(func, t_vals[i], S_vals[i], h)
     return t_vals, S_vals
+
+# Riemann Sum Integral:
+
+def riemann_sum(func, a, b, n):
+    """
+    Approximate an integral using the midpoint Riemann sum.
+
+    Args:
+        func (callable): Function.
+        a (float): Lower integration limit.
+        b (float): Upper integration limit. 
+        n (int): Number of subintervals.
+
+    Returns:
+        float: Approximation of the integral.
+    """
+    dx = (b - a) / n
+    total = 0.0
+    for i in range(n):
+        xi = a + i * dx
+        midpoint = xi + dx / 2
+        total += func(midpoint)
+    R = total * dx
+    return R
+
+# Trapezoid Rule Integral:
+
+def trapezoidal_rule(func, a, b, n):
+    """
+    Approximate an integral using the trapezoidal rule.
+
+    Args:
+        func (callable): Function.
+        a (float): Lower integration limit.
+        b (float): Upper integration limit. 
+        n (int): Number of subintervals.
+
+    Returns:
+    float: Approximation of the integral.
+    """
+    x = np.linspace(a, b, n+1) # n subintervals
+    y = func(x)
+    dx = (b - a) / n
+    T = (dx / 2) * (y[0] + 2*np.sum(y[1:-1]) + y[-1])
+    return T
+
+# Simpsons Integral:
+
+def simpson_rule(func, a, b, n, *args):
+    """
+    Approximate an integral using Simpson's rule.
+
+    Args:
+        func (callable): Function.
+        a (float): Lower integration limit.
+        b (float): Upper integration limit. 
+        n (int): Number of subintervals.
+
+    Returns:
+    float: Approximation of the integral.
+    """
+    if n % 2 != 0:
+        raise ValueError("n must be even.")
+
+    x = np.linspace(a, b, n+1)
+    y = func(x)
+    dx = (b - a) / n
+
+    S = (dx/3) * (y[0] + 2*np.sum(y[2:-1:2]) + 4*np.sum(y[1::2]) + y[-1])
