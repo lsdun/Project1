@@ -2,6 +2,10 @@
 This is the main script that produces the results of the integration techniques for 
 the damped harmonic oscillator.
 
+Methods compared:
+- Hand-written explicit Euler Method and 4th Order Runge Kutta integrations
+- SciPy ODE solver
+- Analytic solution
 """
 
 # Import plotting packages
@@ -85,10 +89,11 @@ for gamma, label, color in zip(gamma_values, labels, colors):
 
 plt.xlabel("Time [s]", fontsize=15)
 plt.ylabel("Displacement x(t)", fontsize=15)
-plt.title("Damped Harmonic Oscillator Damping Ratio", fontsize=20)
+plt.title("Damped Harmonic Oscillator in Different Regimes", fontsize=20)
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
+plt.savefig("Regimes.png")
 plt.show()
 
 # calculate the analytic solution
@@ -143,4 +148,5 @@ plt.ylabel('Total Energy E(t) [J]', fontsize=15)
 plt.title('Damped Harmonic Oscillator Total Mechanical Energy', fontsize=20)
 plt.legend()
 plt.grid(True)
+plt.savefig("TotalEnergy.png")
 plt.show()

@@ -24,4 +24,3 @@ def damped(X, t, m=1.0, gamma=0.2, k=1.0):
     dxdt = v
     dvdt = -(k/m) * x - (gamma/m) * v
     return [dxdt, dvdt] # pack derivatives
-
