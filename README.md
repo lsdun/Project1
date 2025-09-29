@@ -40,7 +40,7 @@ Install with:
 
 Run:
 
-python Main_Script_DampedOscillator.py
+`python Main_Script_DampedOscillator.py`
 
 This generates:
 
@@ -54,7 +54,7 @@ This generates:
 
 Run:
 
-python Main_Script_BiotSavart.py
+`python Main_Script_BiotSavart.py`
 
 This generates:
 
