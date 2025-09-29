@@ -2,12 +2,12 @@
 
 This project compares numerical integration techniques for two physics problems with known analytic solutions:
 
-## Damped Harmonic Oscillator ODE problem
+## 1. Damped Harmonic Oscillator ODE problem
 
 - Numerical methods: Explicit Euler, Classical RK4, SciPy RK45.
 - Validates numerical solutions against analytic displacement and energy decay.
   
-## Magnetic Field of a Finite Wire via Biot–Savart Law (Definite integral problem)
+## 2. Magnetic Field of a Finite Wire via Biot–Savart Law (Definite integral problem)
 
 - Numerical methods: Hand-written Riemann, Trapezoid, Simpson; SciPy trapezoid and simpson.
 - Validates numerical solutions against analytic field and limiting cases (wire length -> 0 or infinity)
@@ -62,7 +62,7 @@ This generates:
 - Error vs. number of subdivisions n.
 - Convergence test log-log plot with slope to show scaling
 
-Figures are saved to the figures/ directory.
+Figures are saved to the `figures/` directory.
 
 ## Validation
 
@@ -80,7 +80,7 @@ Figures are saved to the figures/ directory.
 - Limiting cases correctly reproduce expected values.
 
 ## Report
-in report/
+in `report/` directory
 
 
 
