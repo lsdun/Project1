@@ -12,6 +12,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy import integrate
 import matplotlib.colors as mcolors
+import os
+
+# create a directory for the figures
+os.makedirs("figures", exist_ok=True)
 
 # Import custom modules
 from Biot_Savart import biotsavart_integrand
@@ -67,7 +71,7 @@ plt.ylabel("Magnetic field B_y (T)", fontsize=14)
 plt.title(f"Magnetic field vs wire length at R={R} m", fontsize=16)
 plt.legend()
 plt.grid(True)
-plt.savefig("biot_length.png")
+plt.savefig("figures/biot_vs_length.png")
 plt.show()
 
 # verifying the limiting cases where L is very small and L goes to infinity
@@ -109,7 +113,7 @@ plt.title("Limit $L \\to \\infty$", fontsize=16)
 plt.legend()
 plt.grid(True)
 
-plt.savefig("biot_limits.png")
+plt.savefig("figures/biot_length_limits.png")
 plt.tight_layout()
 plt.show()
 
@@ -168,5 +172,5 @@ plt.ylabel("Absolute error (B)")
 plt.legend()
 plt.grid(True, which="both", ls=":")
 plt.title("Integration Error Convergence (Biot–Savart)")
-plt.savefig("convergence_biot.png")
+plt.savefig("figures/convergence_biot.png")
 plt.show()
