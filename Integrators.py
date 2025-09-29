@@ -148,7 +148,7 @@ def trapezoidal_rule(func, a, b, n):
 
 # Simpsons Integral:
 
-def simpson_rule(func, a, b, n, *args):
+def simpson_rule(func, a, b, n):
     """
     Approximate an integral using Simpson's rule.
 
