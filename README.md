@@ -20,8 +20,8 @@ This project compares numerical integration techniques for two physics problems 
 - Biot_Savart.py                   (Functions for magnetic field of a finite wire)
 - Main_Script_DampedOscillator.py  (Runs ODE solvers, plots results, computes error)
 - Main Script_BiotSavart.py        (Runs integration methods, plots results, computes error)
-- figures/                         (Generated figures)
-- report/                          (LaTeX report)
+- `figures/`                       (Generated figures)
+- `report/`                        (LaTeX report)
 
 ## Requirements
 
