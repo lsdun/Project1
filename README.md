@@ -32,7 +32,7 @@ report/                           # LaTeX report
   - matplotlib
 
 Install with:
-pip install numpy scipy matplotlib
+`pip install numpy scipy matplotlib`
 
 ## Usage
 
@@ -81,4 +81,6 @@ Figures are saved to the figures/ directory.
 
 ## Report
 in report/
+
+
 
